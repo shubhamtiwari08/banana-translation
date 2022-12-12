@@ -2,14 +2,14 @@ let userInput = document.querySelector("#user-inpt")
 let output = document.querySelector("#output")
 const translate = document.querySelector("#submit")
 
+translate.addEventListener("click", clickhandler)
 
-const response = fetch("https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json")
-    .then(function responseHandler(response) { return response.json() })
-    .then(function logJson(json) { console.log(json) })
+function getTranslationUrl(text) {
+    return serverUrl = "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json" + "?" + "text+" + text
 
-translate.addEventListener("click", userOutput)
-
-
-function userOutput() {
-    output.textContent = userInput.value
+function clickhandler(serverUrl) {
+    var inputText = userInput.value
+    fetch(getTranslationUrl(inputText))
+        .then((response) => response.json)
+        .then((json) => console.log(json))
 }
