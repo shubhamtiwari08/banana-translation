@@ -4,11 +4,8 @@ const translate = document.querySelector("#submit")
 
 
 const response = fetch("https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json")
-    .then((response) => {
-        console.log(response)
-    }).catch(err => {
-        console.log(err)
-    })
+    .then(function responseHandler(response) { return response.json() })
+    .then(function logJson(json) { console.log(json) })
 
 translate.addEventListener("click", userOutput)
 
