@@ -6,6 +6,7 @@ translate.addEventListener("click", clickhandler)
 
 function getTranslationUrl(text) {
     return serverUrl = "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json" + "?" + "text+" + text
+}
 
 function clickhandler(serverUrl) {
     var inputText = userInput.value
