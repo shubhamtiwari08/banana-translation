@@ -2,15 +2,23 @@ let userInput = document.querySelector("#user-inpt")
 let output = document.querySelector("#output")
 const translate = document.querySelector("#submit")
 
-translate.addEventListener("click", clickhandler)
+serverUrl = "https://api.funtranslations.com/translate/minion.json"
+
+function errorHandler(error) { console.log(`error ocurred ${error}`) }
 
 function getTranslationUrl(text) {
-    return serverUrl = "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json" + "?" + "text+" + text
+    return serverUrl + "?" + "text=" + text
 }
 
-function clickhandler(serverUrl) {
+function clickhandler() {
     var inputText = userInput.value
     fetch(getTranslationUrl(inputText))
-        .then((response) => response.json)
-        .then((json) => console.log(json))
+        .then(response => response.json())
+        .then(json => {
+            output.textContent = json.contents.translated
+
+        })
+        .catch(errorHandler)
 }
+
+translate.addEventListener("click", clickhandler)
